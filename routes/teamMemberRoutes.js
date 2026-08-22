@@ -1,0 +1,21 @@
+const express = require('express');
+const router = express.Router();
+const {
+  getTeamMembers,
+  getTeamMemberById,
+  createTeamMember,
+  updateTeamMember,
+  deleteTeamMember,
+} = require('../controllers/teamMemberController');
+const { protect } = require('../middleware/authMiddleware');
+
+router.route('/')
+  .get(getTeamMembers)
+  .post(protect, createTeamMember);
+
+router.route('/:id')
+  .get(getTeamMemberById)
+  .put(protect, updateTeamMember)
+  .delete(protect, deleteTeamMember);
+
+module.exports = router;

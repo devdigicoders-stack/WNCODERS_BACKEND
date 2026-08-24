@@ -34,7 +34,7 @@ const getProjectById = async (req, res) => {
 // @access  Private
 const createProject = async (req, res) => {
   try {
-    const { title, description, imageUrl, projectLink, technologies } = req.body;
+    const { title, description, imageUrl, projectLink, technologies, status } = req.body;
 
     if (!title || !description || !imageUrl || !projectLink || !technologies) {
       return res.status(400).json({ message: 'Please provide all fields' });
@@ -46,6 +46,7 @@ const createProject = async (req, res) => {
       imageUrl,
       projectLink,
       technologies,
+      status,
     });
 
     res.status(201).json(project);
@@ -67,6 +68,7 @@ const updateProject = async (req, res) => {
       project.imageUrl = req.body.imageUrl || project.imageUrl;
       project.projectLink = req.body.projectLink || project.projectLink;
       project.technologies = req.body.technologies || project.technologies;
+      project.status = req.body.status || project.status;
 
       const updatedProject = await project.save();
       res.status(200).json(updatedProject);

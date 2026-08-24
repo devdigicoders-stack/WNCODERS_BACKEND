@@ -26,6 +26,11 @@ const projectSchema = new mongoose.Schema(
       type: String,
       enum: ['Completed', 'In Progress', 'Pending'],
       default: 'In Progress',
+    },
+    category: {
+      type: String,
+      enum: ['Web Development', 'App Development', 'Other'],
+      required: [true, 'Please add a category'],
     }
   },
   {

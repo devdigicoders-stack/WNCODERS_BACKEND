@@ -28,8 +28,8 @@ const projectSchema = new mongoose.Schema(
       default: 'In Progress',
     },
     category: {
-      type: String,
-      enum: ['Web Development', 'App Development', 'Other'],
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Category',
       required: [true, 'Please add a category'],
     }
   },

@@ -5,7 +5,7 @@ const Project = require('../models/Project');
 // @access  Public
 const getProjects = async (req, res) => {
   try {
-    const projects = await Project.find().sort({ createdAt: -1 });
+    const projects = await Project.find().populate('category').sort({ createdAt: -1 });
     res.status(200).json(projects);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -17,7 +17,7 @@ const getProjects = async (req, res) => {
 // @access  Public
 const getProjectById = async (req, res) => {
   try {
-    const project = await Project.findById(req.params.id);
+    const project = await Project.findById(req.params.id).populate('category');
 
     if (project) {
       res.status(200).json(project);

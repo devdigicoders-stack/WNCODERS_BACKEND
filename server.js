@@ -13,6 +13,7 @@ const categoryRoutes = require('./routes/categoryRoutes');
 const uploadRoutes = require('./routes/uploadRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 const announcementRoutes = require('./routes/announcementRoutes');
+const clientLogoRoutes = require('./routes/clientLogoRoutes');
 const path = require('path');
 
 // Connect to database
@@ -45,6 +46,7 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/announcements', announcementRoutes);
+app.use('/api/client-logos', clientLogoRoutes);
 
 const PORT = process.env.PORT || 5000;
 
